@@ -1,5 +1,7 @@
 # Windows Security Event ID : 4625 -- Failed Logon 🚨
 <!-- TODO: link to Splunk detection when folder ready -->
+[PowerShell Script to filter and show 4625](Blue-Team-Forensics/Powershell/Event-Queries/Windows-Security/Get-4625FailedLogon.ps1)
+
 ## Description ✍
 Event ID 4625 is generated when a logon attempt fails. It helps analysts detect Brute Force attacks, unauthorized access attempts or misconfigure services.
 
