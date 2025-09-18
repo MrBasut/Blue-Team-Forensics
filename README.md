@@ -5,6 +5,7 @@ It serves as a structured portfolio of scripts, queries, case reports, and analy
 ---
 
 ## 📂 Repository Structure
+- **Event-Notes/** → Theoritical notes for Event IDs
 - **powershell/** → Scripts for log collection and hunting  
 - **splunk/** → SPL queries (Windows Event IDs & Sysmon)  
 - **sentinel/** → KQL queries (Microsoft Sentinel / Log Analytics)  
