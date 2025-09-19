@@ -8,4 +8,4 @@
 
 
 index=wineventlog sourcetype=WinEventLog EventCode=4625 earliest=-24h latest=now TargetUserName="TargetUser"
-| table _time TargetUserName SourceNetworkAddress WorkstationName FailureReason
+| table _time TargetUserName SourceNetworkAddress  LogonType WorkstationName FailureReason
