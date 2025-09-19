@@ -1,6 +1,7 @@
 # Windows Security Event ID 4624 -- Successful Logon 🔓
 
-[PowerShell Script to filter and show 4624](../../Powershell/Get-4624SuccessfulLogon.ps1)
+[PowerShell Script to filter 4624](../../Powershell/Get-4624SuccessfulLogon.ps1)
+[Splunk Query to filter 4624](../../Splunk/SingleQueries/4624_successfullogons.spl)
 
 ## Description ✍
 Event ID 4624 is generated when there is a successful logon. If the log is generated right after EventID 4625(failed logon) excessive amount (depending on threshold) logs, it helps investigators understand which user is compromised.
