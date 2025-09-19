@@ -1,5 +1,6 @@
-#This query is designed to filter failed logon attempts from past 24 hours
-#You may alter value to suit your needs.
+#This query is designed to filter failed logon attempts from the last 24 hours.
+#You may alter values to suit your needs.
+#Fill "earliest" and "latest" parameters with exact date-time to filter specific time line. (e.g earliest = '2025-09-19T00:00:00' latest = '2025-09-20T00:00:00')
 
 
 
