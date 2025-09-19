@@ -1,11 +1,21 @@
-#This query is designed to filter successful logons from the last 24 hours for a specific user "TargetUser".
+#This query is designed to filter successful logons for a specific user.
+#Replace <From_time> and <To_time> with desired absolute or relative values
 #Returns will be in table format of time, username, IP address and workstation name.
 #You may alter values to suit your needs.
 #Replace "TargetUser" with desired username, e.g. TargetUserName="administrator" or leave it empty to search for all users
-#Fill "earliest" and "latest" parameters with exact date-time to filter specific time line, e.g earliest = '2025-09-19T00:00:00' latest = '2025-09-20T23:59:59'
 
 
 
 
-index=wineventlog sourcetype=WinEventLog EventCode=4624 earliest=-24h latest=now TargetUserName="TargetUser"
-| table _time TargetUserName SourceNetworkAddress LogonType WorkstationName
+index=wineventlog sourcetype=WinEventLog EventCode=4624 earliest=<From_Time> latest=<To_Time> TargetUserName="<Target_User>"
+| eval LogonTypeDesc = case(
+    LogonType=2, "Interactive",
+    LogonType=3, "Network",
+    LogonType=4, "Batch",
+    LogonType=5, "Service",
+    LogonType=7, "Unlock",
+    LogonType=10, "RemoteInteractive (RDP/TS)",
+    LogonType=11, "CachedInteractive",
+    true(), tostring(LogonType)
+  )
+| table _time TargetUserName SourceNetworkAddress LogonType LogonTypeDesc WorkstationName
