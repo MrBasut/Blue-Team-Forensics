@@ -1,4 +1,5 @@
-#This query is designed to filter failed logon attempts from the last 24 hours for a specific user "TargetUser".
+#This query is designed to filter failed logon attempts for a specific user.
+#Replace <From_time> and <To_time> with desired absolute or relative values
 #Returns will be in table format of time, username, IP address, workstation name and failure reason.
 #You may alter values to suit your needs.
 #Replace "TargetUser" with desired username, e.g. TargetUserName="administrator" or leave it empty to search for all users
@@ -7,5 +8,18 @@
 
 
 
-index=wineventlog sourcetype=WinEventLog EventCode=4625 earliest=-24h latest=now TargetUserName="TargetUser"
-| table _time TargetUserName SourceNetworkAddress  LogonType WorkstationName FailureReason
+index=wineventlog sourcetype=WinEventLog EventCode=4625 earliest=<From_Time> latest=<To_Time> TargetUserName="<Target_User>"
+| bin _time span=<TimePeriod>
+| stats count AS FailedAttempts values(SourceNetworkAddress) AS SourceIP values(FailureReason) AS FailureReasons by _time TargetUserName LogonType
+| eval LogonTypeDesc = case(
+    LogonType=2, "Interactive",
+    LogonType=3, "Network",
+    LogonType=4, "Batch",
+    LogonType=5, "Service",
+    LogonType=7, "Unlock",
+    LogonType=10, "RemoteInteractive",
+    LogonType=11, "CachedInteractive",
+    true(), tostring(LogonType)
+  )
+| sort _time
+
