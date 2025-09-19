@@ -1,0 +1,6 @@
+#This query is designed to filter failed logon attempts from past 24 hours
+#You may alter value to suit your needs.
+
+
+
+index=windeventlog_security sourcetype="WinEventLog:Security" EventCode=4625 earliest=-24h latest=now 
