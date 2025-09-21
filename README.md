@@ -1,6 +1,6 @@
 # Blue-Team-Forensics
 This repository contains my work in **forensics, incident response, and detection engineering**.  
-It serves as a structured portfolio of scripts, queries, case reports, and analysis notes that I’ve developed and used in professional Blue Team practices.
+It serves as a structured portfolio of scripts, queries, case reports, and analysis notes that I’ve used in professional Blue Team practices.
 
 ---
 
