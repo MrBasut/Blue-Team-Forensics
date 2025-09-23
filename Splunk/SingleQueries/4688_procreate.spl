@@ -1,0 +1,11 @@
+#This query is designed to filter process creation for a specific user.
+#Replace <From_time> and <To_time> with desired absolute or relative values.
+#Returns will be in table format of time, username, IP address, workstation name and process created.
+#You may alter values to suit your needs.
+#Replace "TargetUser" with desired username, e.g. TargetUserName="administrator" or leave it empty to search for all users
+#Fill TimePeriod value to group into time intervals.
+
+
+index=wineventlog sourcetype=WinEventlog EventCode=4688 earliest=<From_time> latest=<To_time> TargetUserName=<Target_User>
+| bin _time span=<TimePeriod>
+| stat count values(SourceNetworkAddress) AS SourceIP 
