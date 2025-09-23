@@ -9,7 +9,7 @@
 
 index=wineventlog sourcetype=WinEventLog EventCode=4625 earliest=<From_Time> latest=<To_Time> TargetUserName="<Target_User>"
 | bin _time span=<TimePeriod>
-| stats count AS FailedAttempts values(SourceNetworkAddress) AS SourceIP values(FailureReason) AS FailureReasons by _time TargetUserName LogonTypeDesc
+| stats count AS FailedAttempts values(SourceNetworkAddress) AS SourceIP values(FailureReason) AS FailureReasons by _time TargetUserName LogonType
 | eval LogonTypeDesc = case(
     LogonType=2, "Interactive",
     LogonType=3, "Network",
