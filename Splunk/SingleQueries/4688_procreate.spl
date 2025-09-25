@@ -6,6 +6,6 @@
 #Fill TimePeriod value to group into time intervals.
 
 
-index=wineventlog sourcetype=WinEventlog EventCode=4688 earliest=<From_time> latest=<To_time> TargetUserName=<Target_User>
+index=wineventlog sourcetype=WinEventlog EventCode=4688 earliest=<From_time> latest=<To_time> (TargetUserName=<Target_User> OR TargetUserName="*")
 | bin _time span=<TimePeriod>
-| stat count values(SourceNetworkAddress) AS SourceIP 
+| stat count TotalEvents values(SourceNetworkAddress) AS SourceIP values(ProcessCommandLine) AS CommandLine values(WorkstationName) AS Computer values(NewProcessName) AS NewProcess by _time TargetUserName
