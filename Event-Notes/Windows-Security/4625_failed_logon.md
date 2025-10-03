@@ -3,6 +3,8 @@
 [PowerShell Script to filter 4625](../../Powershell/Event-Queries/Windows-Security/Get-4625FailedLogon.ps1)
 
 [Splunk Query to filter 4625](../../Splunk/SingleQueries/4625_failedlogon.spl)
+
+[KQL Query to filter 4625](../../KQL/SingleQueries/4625_failedlogon.kql)
 ## Description ✍
 Event ID 4625 is generated when a logon attempt fails. It helps analysts detect Brute Force attacks, unauthorized access attempts or misconfigure services.
 
