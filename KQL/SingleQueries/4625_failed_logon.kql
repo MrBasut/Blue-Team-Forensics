@@ -1,0 +1,19 @@
+//This query is built to filter 4625 logs in a system.
+//It makes a table with indices of FailedAttempts, AttemptedIPs, TargetUserName, Computer, LogonType and TimeGenerated.
+//Change Desired_Logon_Types, Start_Point, End_Point and Time_Period as your needs.
+//Format of date time should be (YYYY-MM-DDThh:mm:ssZ)
+//Don't forget to write unit of Time_Period (e.g. 5m, 1h)
+//If you want to filter for a spesific user, change the value Targeted_User to targeted one. Otherwise, make the value "*".
+//You may active the last row to draw a time chart.
+
+
+SecurityEvent
+| where EventID == 4625
+| where TargetUserName == <Targeted_User> or <Targeted_User> == "*"
+| where LogonType in (<Desired_Logon_Types>)
+| where TimeGenerated between (datetime(<Start_Point>) .. datetime(<End_Point>))
+| bin TimeGenerated = <Time_Period>
+| summarize FailedAttempts = count(), AttemptedIPs = make_set(IpAddress) by TargetUserName, Computer, LogonType, TimeGenerated
+| sort by FailedAttempts desc
+//| render timechart
+
