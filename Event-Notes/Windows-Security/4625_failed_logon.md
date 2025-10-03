@@ -4,7 +4,7 @@
 
 [Splunk Query to filter 4625](../../Splunk/SingleQueries/4625_failedlogon.spl)
 
-[KQL Query to filter 4625](../../KQL/SingleQueries/4625_failedlogon.kql)
+[KQL Query to filter 4625](../../KQL/SingleQueries/4625_failed_logon.kql)
 ## Description ✍
 Event ID 4625 is generated when a logon attempt fails. It helps analysts detect Brute Force attacks, unauthorized access attempts or misconfigure services.
 
