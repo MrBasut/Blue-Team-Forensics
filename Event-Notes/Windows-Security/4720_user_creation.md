@@ -3,7 +3,7 @@
 
 ## Description ✍
 
-Event ID 4720 is generated when an user account is created. It helps administrators/analysts check whether there is a change in the list of users.
+Event ID 4720 is generated when a new user account is created on a Windows system. Monitoring this event is crucial for detecting unauthorized account creations, privilege escalation attempts, and attacker persistence techniques.
 
 ## Key Fileds 🗝
 
